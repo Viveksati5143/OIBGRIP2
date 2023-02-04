@@ -1,58 +1,118 @@
-import java.util.Scanner;
+import java.util.*;
+public class index{
+    public static void main(String[] args){
 
-public class index {
+		int Pin;
+        int Balance = 100000;
+        int Withdraw=0;
+        int Deposit=0;
+        int TransferAmount=0;
+		int next = 1;
 
-    String Language;
-    String UserName;
-    int Password;
-    int Account;
-    float AccountBalance;
-    int Transactions;
-    String History;
-
-    public void newProfile(){
-        System.out.println("Enter your username");
         Scanner sc = new Scanner(System.in);
-        this.UserName = sc.next();
-        System.out.println("Enter your password");
-        this.Password = sc.nextLine();
-        System.out.println("Enter your AccountNumber");
-        this.Account = sc.nextInt();        
-    }
+		System.out.println("Insert your Debit Card");   
+		System.out.println("Select Language:");   
+        System.out.println("Enter the Pin: ");
+        Pin = sc.nextInt();
 
-    public void login(){
-        
-    }
+		if(Pin == 4928){
+			System.out.println("Please Select a Transaction-");   
 
-    public void withdrraw(){
+			while(next == 1){
+				System.out.println("Choose 1 to Withdraw");
+				System.out.println("Choose 2 to Deposit");
+				System.out.println("Choose 3 to Check Balance");
+				System.out.println("Choose 4 to Transfer Money");
+				System.out.println("Choose 5 to Transaction History");
+				System.out.println("Choose 6 to Quit");
+				int choice = sc.nextInt();
 
-    }
+				switch(choice){
+					case 1:
+							System.out.println("\n - - - - - - - - - - - - - Withdraw - - - - - - - - - - - - -");
+							System.out.print("\nEnter the amount to be Withdrawn :");
+							Withdraw = sc.nextInt();
+							if(Balance >= Withdraw){
+								System.out.println("\nWithdraw Operations :\n");
+								System.out.println("Withdraw Money : " +Withdraw);
+								Balance -= Withdraw;
+								System.out.println("Please Collect Cash");   
+								System.out.println("Available Balance is : "+Balance);
+							}
+							else System.out.println("Insufficient Balance");
+							System.out.println("\nDo you wish to continue Yes[1] / No[0] :");
+							next = sc.nextInt();
+							System.out.println("");
+							break;
 
-    public void deposit(){
+					case 2:
+							System.out.println("\n - - - - - - - - - - - - - Deposit  - - - - - - - - - - - - -");
+							System.out.print("\nEnter the amount to be Deposited:");
+							Deposit = sc.nextInt();
+							System.out.println("\nDeposit Operation :\n");
+							Balance += Deposit;
+							System.out.println("Deposit Money : "+Deposit);
+							System.out.println("Your Money has been successfully deposited");
+							System.out.println("Balance : "+Balance);
+							System.out.println("\nDo you wish to continue Yes[1] / No[0]:");
+							next = sc.nextInt();
+							System.out.println("");
+							break;
 
-    }
+					case 3:
+							System.out.println("\nBalance : "+Balance);
+							System.out.println("\nDo you wish to continue Yes[1] / No[0]:");
+							next = sc.nextInt();
+							System.out.println("");
+							break;
 
-    public void accountBalance(){
+					case 4:
+							System.out.println("\n - - - - - - - - - - - - - Transfer Amount - - - - - - - - - - - - -");
+							Long Accno;
+							System.out.println("\nEnter the Account Number");
+							Accno = sc.nextLong();
+							int ifsc;
+							System.out.println("\nEnter the IFSC code");
+							ifsc = sc.nextInt();
+							System.out.println("\nEnter the amount for Transfer");
+							TransferAmount = sc.nextInt();
+							Balance -= TransferAmount;
+							System.out.println("\nYour amount sucessfully transferred to this account " +Accno);
+							int tr;
+							System.out.println("\nEnter 1 for transaction receipt");
+							tr = sc.nextInt();
+							if(tr == 1){
+								System.out.println("\nAccount Number : "+Accno);
+								System.out.println("IFSC Code : "+ifsc);
+								System.out.println("Transfer Amount : "+TransferAmount);
+							}
+							System.out.println("\nDo you wish to continue Yes[1] / No[0]:");
+							next = sc.nextInt();
+							System.out.println("");
+							break;
 
-    }
+					case 5:
+							System.out.println("\n - - - - - - - - - - - - - Transaction History - - - - - - - - - - - - -");
+							System.out.println("Deposit Amount : "+Deposit);
+							System.out.println("Withdraw Amount : "+Withdraw);
+							System.out.println("Transfer Amount : "+TransferAmount);
+							System.out.println("Balance Amount : "+Balance);
+							System.out.println("\nDo you wish to continue Yes[1] / No[0] :");
+							next = sc.nextInt();
+							System.out.println("");
+							break;
 
-    public void history(){
-
-    }
-    public static void main(String[] Args){
-    System.out.println("Insert your Debit Card");   
-    System.out.println("Select Language:");   
-    System.out.println("Please Enter Pin");   
-    System.out.println("Please Select a Transaction-");   
-    System.out.println("Withdraw money");   
-    System.out.println("Enter the amount of money");   
-    System.out.println("Do you want to withdraw x money yes/no");   
-    System.out.println("Please Collect Cash");   
-    System.out.println("Deposit Money");   
-    System.out.println("Transfer Money");   
-    System.out.println("Account Balance");   
-    System.out.println("Transactions History");   
-    System.out.println("Quit");   
-    System.out.println("Please Withdraw your card \n Happy Banking!!");   
+					case 6:											        
+				            next = 0;
+				}
+			}
+			if(next == 0){
+				System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+				System.out.println("Please Withdraw your card \n Happy Banking!!");   
+				System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+				System.exit(0);
+			}
+		}
+		else System.out.println("Please enter the valid Pin!");
     }
 }
